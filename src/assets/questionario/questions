@@ -1,0 +1,59 @@
+ 1 - Se eu precisar trabalhar com um ambiente de desenvolvimento, um de testes e um
+de produção, o que eu devo fazer?
+
+R - Na pasta environments existem 2 arquivos: "environment.ts" e "environment.prod.ts". Eles são respectivamente
+o arquivo de ambiente de desenvolvimento e de produção. Para criar um de teste você pode criar um novo arquivo chamado
+"environment.test.ts". Você pode entrar em cada um deles e fazer uma configuração desta forma:
+export const environment = {
+  production: false
+  ambiente: "desenvolvimento" ou "produção" ou "teste"
+}; 
+Cada um para o seu tipo.
+Agora você pode ir no angular-cli-json na propriedade environments e adicionar os caminhos para os ambientes
+exemplo: 
+"environment": {
+    "development": "environments/environment.ts",
+    "production": "environments/environment.prod.ts",
+    "test": "environments/environment.test.ts"
+:}
+ Depois disso caso você queira iniciar a aplicação em um ambiente diferente
+você pode usar o comando -e  no angular cli:
+ng serve -e production
+
+
+2 - Onde devem ser importados estilos de folha? Como por exemplo os do Bootstrap,
+Font Awesome, etc.
+ 
+ R -  No Angular.json você pode incluir os estilos que você estiver usando
+
+ 3 - Devo definir o tipo da minha variável como "any"? Por que?
+
+ R - Não. Porque existem diversos tipos de dados para você utilizar. Ao utilizar any alguém pode passar 
+ um number em uma date, ou uma string em uma date, o que não é produtivo.
+
+ 4 - Como faço para configurar minha aplicação para rodar em um contexto diferente do
+servido localmente?
+
+R - Você vai ter que configurar onde a aplicação vai ficar hospedada e as rotas para utilizarem o novo contexto
+
+
+5 - É possível utilizar múltiplos módulos de rotas?
+
+R - Sim é possível. Você pode criar um modulo de rotas publicas e outro de rotas que  só podem ser acessadas com
+login por exemplo.
+
+6 - Você utilizaria Lazy Load para gerenciar as rotas da aplicação? Por que?
+
+R - Sim, para melhorar a perfomance da aplicação, fazendo com que apenas o component necessário seja carregado 
+quando estiver naquela rota, carregando os outros somente quando a rotar mudar e somente o necessário.
+
+7 -É possível consumir uma stream de dados utilizando as bibliotecas que
+acompanham por default o Framework?
+ 
+ R - Sim. Utilizando RxJS é possível
+
+ 8 - Como eu garanto que meu código segue os padrões EcmaScript?
+
+R - Você pode configurar o seu ambient de produção para verificar se os padrões estão sendo seguidos
+Se não forem o build  do produto não conclui. Outra opção é fazer isso ja no desenvolvimento. Existem extensões
+que verificam se o codigo segue os padrões e você pode configurar para não fazer o build caso não estejam nos padrões.
